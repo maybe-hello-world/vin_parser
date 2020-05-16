@@ -1,0 +1,10 @@
+[package]
+name = "vin"
+version = "1.0.0"
+authors = ["Roman Beltiukov <maybe.hello.world@gmail.com>"]
+edition = "2018"
+description = "Vehicle Identification Number (VIN) parser and validator."
+license = "MIT"
+
+[dependencies]
+lazy_static = "^1.4"
