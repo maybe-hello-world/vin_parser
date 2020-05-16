@@ -1,4 +1,9 @@
 # VIN
+[![Build Status](https://travis-ci.org/maybe-hello-world/vin.svg?branch=master)](https://travis-ci.org/maybe-hello-world/vin)
+[![codecov](https://codecov.io/gh/maybe-hello-world/vin/branch/master/graph/badge.svg)](https://codecov.io/gh/maybe-hello-world/vin)
+
+
+
 Vehicle Identification Number (VIN) parser and validator for Rust.
 
 Provides information about region, manufacturer, country of origin, possible years of assembling
