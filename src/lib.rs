@@ -120,7 +120,7 @@ impl VIN {
     /// Returns possible years of assembling
     pub fn years(&self) -> Vec<u32> {
         let letters = "ABCDEFGHJKLMNPRSTVWXY123456789";
-        let year_letter = &self.vis().chars().nth(0).unwrap();
+        let year_letter = &self.vis().chars().next().unwrap();
 
         let mut year: u32 = 1979;
         let cur_year = SystemTime::now()
@@ -168,7 +168,7 @@ pub fn check_validity(vin: &str) -> Result<(), VINError> {
     // check alphabet
     let used_chars: HashSet<char> = vin.chars().collect();
     let odd_chars: HashSet<char> = used_chars.difference(&dicts::ALLOWED_CHARS).cloned().collect();
-    if odd_chars.len() > 0 {
+    if !odd_chars.is_empty() {
         return Err(InvalidCharacters(odd_chars));
     }
 
@@ -238,7 +238,7 @@ pub fn get_info(vin: &str) -> Result<VIN, VINError> {
     let vin = vin.to_uppercase();
     check_validity(&vin)?;
 
-    return Ok(VIN {
+    Ok(VIN {
         vin: vin.clone(),
         country: get_country(&vin[..2]),
         manufacturer: get_manufacturer(&vin[..3]),

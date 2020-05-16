@@ -17,12 +17,12 @@ lazy_static! {
     pub(in crate) static ref ALLOWED_CHARS: HashSet<char> = VALUE_MAP.keys().cloned().collect();
 
     pub(in crate) static ref REGIONS: Vec<(HashSet<char>, String)> = vec![
-        (HashSet::from_iter("ABCDEFGH".chars().into_iter()), "Africa".to_string()),
-        (HashSet::from_iter("JKLMNPR".chars().into_iter()), "Asia".to_string()),
-        (HashSet::from_iter("STUVWXYZ".chars().into_iter()), "Europe".to_string()),
-        (HashSet::from_iter("12345".chars().into_iter()), "North America".to_string()),
-        (HashSet::from_iter("67".chars().into_iter()), "Oceania".to_string()),
-        (HashSet::from_iter("89".chars().into_iter()), "South America".to_string()),
+        (HashSet::from_iter("ABCDEFGH".chars()), "Africa".to_string()),
+        (HashSet::from_iter("JKLMNPR".chars()), "Asia".to_string()),
+        (HashSet::from_iter("STUVWXYZ".chars()), "Europe".to_string()),
+        (HashSet::from_iter("12345".chars()), "North America".to_string()),
+        (HashSet::from_iter("67".chars()), "Oceania".to_string()),
+        (HashSet::from_iter("89".chars()), "South America".to_string()),
     ];
 
     pub(in crate) static ref COUNTRIES: HashMap<String, String> = unpack_countries(vec![
@@ -691,7 +691,7 @@ fn unpack_countries(countries: Vec<(&str, &str)>) -> HashMap<String, String> {
     let mut result: HashMap<String, String> = HashMap::new();
 
     for (code, title) in countries {
-        let first = code.chars().nth(0).unwrap();
+        let first = code.chars().next().unwrap();
         let from = code.chars().nth(2).unwrap();
         let to = code.chars().nth(3).unwrap();
 
@@ -706,7 +706,7 @@ fn unpack_countries(countries: Vec<(&str, &str)>) -> HashMap<String, String> {
 }
 
 pub(in crate) fn get_region(r_code: &str) -> String {
-    let r_code = r_code.chars().nth(0).unwrap();
+    let r_code = r_code.chars().next().unwrap();
     for (codes, region) in REGIONS.iter() {
         if codes.contains(&r_code) {
             return region.clone();
@@ -720,6 +720,6 @@ pub(in crate) fn get_country(c_code: &str) -> String {
 }
 
 pub(in crate) fn get_manufacturer(m_code: &str) -> String {
-    let result: Option<String> = MANS.get(m_code).or(MANS.get(&m_code[..2])).map(|x| x.clone());
-    result.unwrap_or("Unknown".to_string())
+    let result: Option<String> = MANS.get(m_code).or_else(|| MANS.get(&m_code[..2])).cloned();
+    result.unwrap_or_else(|| "Unknown".to_string())
 }
