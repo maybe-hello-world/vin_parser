@@ -1,6 +1,8 @@
 # VIN
 [![Build Status](https://travis-ci.org/maybe-hello-world/vin.svg?branch=master)](https://travis-ci.org/maybe-hello-world/vin)
 [![codecov](https://codecov.io/gh/maybe-hello-world/vin/branch/master/graph/badge.svg)](https://codecov.io/gh/maybe-hello-world/vin)
+[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
+[![docs: latest](https://docs.rs/mio/badge.svg)](https://docs.rs/vin)]
 
 
 
