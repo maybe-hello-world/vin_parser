@@ -1,5 +1,5 @@
 [package]
-name = "vin"
+name = "vin_parser"
 version = "1.0.0"
 authors = ["Roman Beltiukov <maybe.hello.world@gmail.com>"]
 edition = "2018"
