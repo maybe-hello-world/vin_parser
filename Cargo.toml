@@ -5,6 +5,7 @@ authors = ["Roman Beltiukov <maybe.hello.world@gmail.com>"]
 edition = "2018"
 description = "Vehicle Identification Number (VIN) parser and validator."
 license = "MIT"
+repository = "https://github.com/maybe-hello-world/vin_parser"
 
 [dependencies]
 lazy_static = "^1.4"
