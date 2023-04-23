@@ -30,7 +30,7 @@ extern crate vin_parser;
 
 // Check VIN with checksum validation
 let vin_number = "1M8GDM9AXKP042788";
-assert!(vin_parser::verify_checksum(vin).is_ok());
+assert!(vin_parser::verify_checksum(vin_number).is_ok());
 ```
 
 ```rust
