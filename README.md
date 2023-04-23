@@ -15,7 +15,7 @@ and checksum validation of given Vehicle Identification Number.
 Add dependency to your `Cargo.toml`
 ```
 [dependencies]
-vin = "1.0.0"
+vin_parser = "1.0.0"
 ```
 Then, in your crate:
 ```rust
